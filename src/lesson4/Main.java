@@ -92,27 +92,28 @@ class TicTacToe {
 
     boolean checkWin(char ch) {
         //
-        int x, y;
-        for (x = 0; x < 2; x++) {
-            for (y = 0; y < 2; y++) {
-                if (table[y][0 + x] == ch && table[y][1 + y] == ch) {
-                    return true;
-                }
-            }
-        }
-        //
-        for (x = 0; x < 2; x++) {
-            for (y = 0; y < 2; y++) {
-                if (table[0 + x][y] == ch && table[1 + x][y] == ch) {
-                    return true;
-                }
-            }
-        }
+        for (int x = 0; x < 3; x++)
+            if ((table[0][0] == ch && table[0][1] == ch &&
+                    table[0][2] == ch) ||
+                    (table[0][0] == ch && table[1][0] == ch &&
+                            table[2][0] == ch))
+                return true;
+        if ((table[1][0] == ch && table[1][1] == ch &&
+                table[1][2] == ch) ||
+                (table[0][1] == ch && table[1][1] == ch &&
+                        table[2][1] == ch))
+            return true;
+        if ((table[2][0] == ch && table[2][1] == ch &&
+                table[2][2] == ch) ||
+                (table[0][2] == ch && table[1][2] == ch &&
+                        table[2][2] == ch))
+            return true;
         //
         if (table[0][0] == ch && table[1][1] == ch && table[2][2] == ch) return true;
         if (table[2][0] == ch && table[1][1] == ch && table[0][2] == ch) return true;
         return false;
     }
+
 
     boolean isTableFull() {
         for (int y = 0; y < 3; y++) {
@@ -125,6 +126,3 @@ class TicTacToe {
         return true;
     }
 }
-
-
-
